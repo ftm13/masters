@@ -1,6 +1,7 @@
 log.note	
-exec.memory	25M
-exec.time	0.037s
-exec.errors	0
+exec.memory	34M
+exec.time	10h41m
+exec.errors	1
 exec.warnings	0
-exec.status	running
+exec.status	exception
+exec.disk	24K

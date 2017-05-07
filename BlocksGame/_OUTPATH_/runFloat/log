@@ -6,9 +6,9 @@ main() {
   Parser: 11 catUnaryRules (sorted), 8 nonCatUnaryRules (in trie)
   Dataset.read 
   Learner.learn() 
-  Server started at http://point37.doc.ic.ac.uk:8400/sempre
+  Server started at http://ftm13-X550LB:8400/sempre
   Press Ctrl-D to terminate.
   format => lisp2json
   q => (execute (call edu.stanford.nlp.sempre.cubeworld.StacksWorld.getLevel (string remove)))
-  sessionId => MwIl0DGuDD3
-  Server.handleQuery MwIl0DGuDD3: (execute (call edu.stanford.nlp.sempre.cubeworld.StacksWorld.getLevel (string remove)))
+  sessionId => 1wpb4hdi9t8
+  Server.handleQuery 1wpb4hdi9t8: (execute (call edu.stanford.nlp.sempre.cubeworld.StacksWorld.getLevel (string remove)))

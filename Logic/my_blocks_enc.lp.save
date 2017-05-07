@@ -1,0 +1,38 @@
+location(X) :- block(X).
+
+% Generate
+% Only one blocked can be moved at time T
+% In order for the move to be valid, X must be a block and Y a location
+{move(X,Y,T) : block(X), location(Y), X!=Y} = 1 :- time(T).
+
+% Sets the number of max moves
+1{max_moves(1..10)}1.
+
+:~max_moves(M).[M@1]
+time(1..T) :- max_moves(T).
+
+% This sets up initial structure of blocks
+on(X,Y,0) :- init_on(X,Y).
+
+move(X,T) :- move(X,_,T).
+
+% If I move X on Y, then X will be on Y
+on(X,Y,T) :- move(X,Y,T), time(T).
+
+% If I don't move X then it stays on the same object
+on(X,Y,T) :- not move(X,T), on(X,Y,T-1), time(T).x	
+
+
+% Can't move a block if there is something above it
+:- on(A,X,T-1), move(X,Y,T).
+
+% Can't keep moving stuff   
+:- move(X,Y,T), on(B,Y,T-1), B != X, Y != table.
+
+% Can't move a block on top of itself
+:- move(X,X,T).
+
+% Enforce the goal
+:- goal_on(X,Y), not on(X,Y,M), moves(M).
+
+#show move/3.
