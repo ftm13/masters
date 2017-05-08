@@ -1,0 +1,59 @@
+<html>
+<head>
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+    <link rel="stylesheet" href="clickable-grid.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <div class="jumbotron text-center">
+      <h1>Blocks world logic learning game!!</h1>
+      <p>Teach the computer a cool rule regarding how to manipulate the stacks!</p> 
+    </div>
+      
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-4">
+          <h3>Initial state</h3>
+          <p>Click on the grid cells in order to change their colour!</p>
+          <div id="grid1"></div>
+        </div>
+        <div class="col-sm-4">
+          <h3>Target state</h3>
+          <p>Draw the outcome of the rule you are trying to teach!</p>
+          <div id="grid2"></div>
+        </div>
+
+      <div class="btn-group-vertical col-sm-4">
+          Rule to learn <input id="rule" type="text" size = "35" name="rule" value="happensAt(remove_col(var(col)), var(time))"><br><br>
+          Current instance <input type="text" id="action" size = "35" name="instance" value="happensAt(remove_col(red), 1)"><br><br>
+          Current hypothesis <textarea id="hyp" rows="6" cols="35" size="35"> Perform learning first </textarea><br><br>
+          <br>
+          <button id = "add-pos" type="button" class="btn btn-primary">Add positive example</button>
+          <button id = "add-neg" type="button" class="btn btn-primary">Add negative example</button>
+          <button id = "learn" type="button" class="btn btn-primary">Perform learning</button>
+      </div>
+    </div>
+    </div>
+
+    <script src="clickable-grid.js" type="text/javascript"></script>
+    <script>
+        document.getElementById("add-pos").addEventListener('click',
+            function() {
+                addExample(true);
+        });
+
+        document.getElementById("add-neg").addEventListener('click',
+            function() {
+                addExample(false);
+        });
+
+        document.getElementById("learn").addEventListener('click',
+            function() {
+            performLearning();
+        });
+    </script>
+</body>
+</html>
