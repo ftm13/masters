@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="asp.ILASPLearnerTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2017-05-09T08:24:17" hostname="ftm13-X550LB" time="2.33">
-  <properties/>
-  <testcase name="testRemoveCol" classname="asp.ILASPLearnerTest" time="2.33"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>

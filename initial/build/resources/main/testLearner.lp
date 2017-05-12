@@ -1,1 +1,0 @@
-holdsAt2(covered(B), T) :- holdsAt(on(B2, B), T), time(T).
