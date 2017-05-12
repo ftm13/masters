@@ -8,7 +8,7 @@ stack(s1;s2;s3;s4).
 max_height(S, S, 0, T) :- holdsAt(stack(S), T).
 max_height(S, B1, H+1, T) :- max_height(S, B2, H, T), holdsAt(on(B1, B2), T).
 max_height2(S,H,T) :- max_height(S,_,H,T).
-height(S,H,T) :- max_height(S,_,H,T), not max_height2(S, H+1, T). 
+height(S,H,T) :- max_height2(S,H,T), not max_height2(S, H+1, T). 
 
 
 holdsAt(F, T+1) :- holdsAt(F, T), not terminateAt(F, T), time(T), time(T+1).

@@ -23,6 +23,10 @@ public class GameStateBuilder {
 
     // Builds the state of the game at a specified time
     public List<List<Integer>> build (List<String> predicates, int time) {
+        blockColour.clear();
+        blockCoveredBy.clear();
+        stacks.clear();
+
         List<ClingoParser.PredicateTree> predicateTrees = predicates.stream()
                                                                     .map(p -> parser.parsePredicate(p))
                                                                     .collect(Collectors.toList());
@@ -74,7 +78,6 @@ public class GameStateBuilder {
                        break;
             case "block_col": visitBlockColor(p, t);
                                break;
-            default: if(!p.isLiteral) System.out.println("Didn't find a match for " + p.name);
         }
     }
 

@@ -16,7 +16,7 @@ public class ILASPLearnerTest {
 
         // Create the knowledge base
         KnowledgeBase kb = new
-                KnowledgeBase("/home/ftm13/SpringBoot/gs-spring-boot/initial/src/main/resources/testLearner.lp");
+                KnowledgeBase("/home/ftm13/masters/initial/src/main/resources/testLearner.lp");
 
         ILASPLearner learner = new ILASPLearner(kb);
 

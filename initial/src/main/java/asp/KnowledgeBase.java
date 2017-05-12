@@ -33,6 +33,9 @@ public class KnowledgeBase {
             // if file doesnt exists, then create it
             if (!file.exists()) {
                 file.createNewFile();
+            } else {
+                file.delete();
+                file.createNewFile();
             }
 
             // true = append file

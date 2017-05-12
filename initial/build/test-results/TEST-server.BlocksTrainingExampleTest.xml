@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="server.BlocksTrainingExampleTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2017-04-28T16:20:49" hostname="ftm13-X550LB" time="0.0">
+<testsuite name="server.BlocksTrainingExampleTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2017-05-09T08:24:24" hostname="ftm13-X550LB" time="0.0">
   <properties/>
   <testcase name="generateContext" classname="server.BlocksTrainingExampleTest" time="0.0"/>
   <system-out><![CDATA[#pos({}, {}, {

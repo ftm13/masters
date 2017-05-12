@@ -27,9 +27,9 @@ public class ILASPLearner {
     private String action = "";
 
     // Initialises the default values for everything
-    public ILASPLearner() {
+    public ILASPLearner(String fileName) {
         KnowledgeBase kb = new
-                KnowledgeBase("/home/ftm13/SpringBoot/gs-spring-boot/initial/src/main/resources/kb.lp");
+                KnowledgeBase(fileName);
 
         List<String> rules = Arrays.asList(
                 // Facts
@@ -94,7 +94,7 @@ public class ILASPLearner {
 
     public String getHypothesis() {
         try {
-            String ilaspfile = "/home/ftm13/SpringBoot/gs-spring-boot/initial/src/main/resources/learningTask.las";
+            String ilaspfile = "/home/ftm13/masters/initial/src/main/resources/learningTask.las";
 
             // Write the learning task to the file
             PrintWriter writer = new PrintWriter(ilaspfile, "UTF-8");

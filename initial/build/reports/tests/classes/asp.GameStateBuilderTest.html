@@ -41,7 +41,7 @@
 </td>
 <td>
 <div class="infoBox" id="duration">
-<div class="counter">0.024s</div>
+<div class="counter">0.009s</div>
 <p>duration</p>
 </div>
 </td>
@@ -63,9 +63,6 @@
 <li>
 <a href="#tab0">Tests</a>
 </li>
-<li>
-<a href="#tab1">Standard output</a>
-</li>
 </ul>
 <div id="tab0" class="tab">
 <h2>Tests</h2>
@@ -79,17 +76,17 @@
 </thead>
 <tr>
 <td class="success">testBuildScenario1</td>
-<td>0.004s</td>
+<td>0.001s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">testBuildSimple</td>
-<td>0.002s</td>
+<td>0s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">testBuildTime</td>
-<td>0.018s</td>
+<td>0.008s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
@@ -99,292 +96,6 @@
 </tr>
 </table>
 </div>
-<div id="tab1" class="tab">
-<h2>Standard output</h2>
-<span class="code">
-<pre>holdsAt(on(b1,s1),1)
-holdsAt
-on(b1,s1),1
-The args are[on(b1,s1), 1]
-on(b1,s1)
-on
-b1,s1
-The args are[b1, s1]
-b1
-Found a literal b1
-s1
-Found a literal s1
-1
-Found a literal 1
-holdsAt(on(b2,s2),1)
-holdsAt
-on(b2,s2),1
-The args are[on(b2,s2), 1]
-on(b2,s2)
-on
-b2,s2
-The args are[b2, s2]
-b2
-Found a literal b2
-s2
-Found a literal s2
-1
-Found a literal 1
-holdsAt(block_col(b1,red),1)
-holdsAt
-block_col(b1,red),1
-The args are[block_col(b1,red), 1]
-block_col(b1,red)
-block_col
-b1,red
-The args are[b1, red]
-b1
-Found a literal b1
-red
-Found a literal red
-1
-Found a literal 1
-holdsAt(block_col(b2,yellow),1)
-holdsAt
-block_col(b2,yellow),1
-The args are[block_col(b2,yellow), 1]
-block_col(b2,yellow)
-block_col
-b2,yellow
-The args are[b2, yellow]
-b2
-Found a literal b2
-yellow
-Found a literal yellow
-1
-Found a literal 1
-holdsAt(on(b1,s1),2)
-holdsAt
-on(b1,s1),2
-The args are[on(b1,s1), 2]
-on(b1,s1)
-on
-b1,s1
-The args are[b1, s1]
-b1
-Found a literal b1
-s1
-Found a literal s1
-2
-Found a literal 2
-holdsAt(on(b2,s2),2)
-holdsAt
-on(b2,s2),2
-The args are[on(b2,s2), 2]
-on(b2,s2)
-on
-b2,s2
-The args are[b2, s2]
-b2
-Found a literal b2
-s2
-Found a literal s2
-2
-Found a literal 2
-holdsAt(block_col(b1,brown),2)
-holdsAt
-block_col(b1,brown),2
-The args are[block_col(b1,brown), 2]
-block_col(b1,brown)
-block_col
-b1,brown
-The args are[b1, brown]
-b1
-Found a literal b1
-brown
-Found a literal brown
-2
-Found a literal 2
-holdsAt(block_col(b2,orange),2)
-holdsAt
-block_col(b2,orange),2
-The args are[block_col(b2,orange), 2]
-block_col(b2,orange)
-block_col
-b2,orange
-The args are[b2, orange]
-b2
-Found a literal b2
-orange
-Found a literal orange
-2
-Found a literal 2
-holdsAt(on(b1,s1),1)
-holdsAt
-on(b1,s1),1
-The args are[on(b1,s1), 1]
-on(b1,s1)
-on
-b1,s1
-The args are[b1, s1]
-b1
-Found a literal b1
-s1
-Found a literal s1
-1
-Found a literal 1
-holdsAt(on(b2,s2),1)
-holdsAt
-on(b2,s2),1
-The args are[on(b2,s2), 1]
-on(b2,s2)
-on
-b2,s2
-The args are[b2, s2]
-b2
-Found a literal b2
-s2
-Found a literal s2
-1
-Found a literal 1
-holdsAt(block_col(b1,red),1)
-holdsAt
-block_col(b1,red),1
-The args are[block_col(b1,red), 1]
-block_col(b1,red)
-block_col
-b1,red
-The args are[b1, red]
-b1
-Found a literal b1
-red
-Found a literal red
-1
-Found a literal 1
-holdsAt(block_col(b2,yellow),1)
-holdsAt
-block_col(b2,yellow),1
-The args are[block_col(b2,yellow), 1]
-block_col(b2,yellow)
-block_col
-b2,yellow
-The args are[b2, yellow]
-b2
-Found a literal b2
-yellow
-Found a literal yellow
-1
-Found a literal 1
-holdsAt(on(b1,s1),1)
-holdsAt
-on(b1,s1),1
-The args are[on(b1,s1), 1]
-on(b1,s1)
-on
-b1,s1
-The args are[b1, s1]
-b1
-Found a literal b1
-s1
-Found a literal s1
-1
-Found a literal 1
-holdsAt(on(b2,b1),1)
-holdsAt
-on(b2,b1),1
-The args are[on(b2,b1), 1]
-on(b2,b1)
-on
-b2,b1
-The args are[b2, b1]
-b2
-Found a literal b2
-b1
-Found a literal b1
-1
-Found a literal 1
-holdsAt(on(b3,b2),1)
-holdsAt
-on(b3,b2),1
-The args are[on(b3,b2), 1]
-on(b3,b2)
-on
-b3,b2
-The args are[b3, b2]
-b3
-Found a literal b3
-b2
-Found a literal b2
-1
-Found a literal 1
-holdsAt(on(b4,s2),1)
-holdsAt
-on(b4,s2),1
-The args are[on(b4,s2), 1]
-on(b4,s2)
-on
-b4,s2
-The args are[b4, s2]
-b4
-Found a literal b4
-s2
-Found a literal s2
-1
-Found a literal 1
-holdsAt(block_col(b1,brown),1)
-holdsAt
-block_col(b1,brown),1
-The args are[block_col(b1,brown), 1]
-block_col(b1,brown)
-block_col
-b1,brown
-The args are[b1, brown]
-b1
-Found a literal b1
-brown
-Found a literal brown
-1
-Found a literal 1
-holdsAt(block_col(b2,orange),1)
-holdsAt
-block_col(b2,orange),1
-The args are[block_col(b2,orange), 1]
-block_col(b2,orange)
-block_col
-b2,orange
-The args are[b2, orange]
-b2
-Found a literal b2
-orange
-Found a literal orange
-1
-Found a literal 1
-holdsAt(block_col(b3,red),1)
-holdsAt
-block_col(b3,red),1
-The args are[block_col(b3,red), 1]
-block_col(b3,red)
-block_col
-b3,red
-The args are[b3, red]
-b3
-Found a literal b3
-red
-Found a literal red
-1
-Found a literal 1
-holdsAt(block_col(b4,yellow),1)
-holdsAt
-block_col(b4,yellow),1
-The args are[block_col(b4,yellow), 1]
-block_col(b4,yellow)
-block_col
-b4,yellow
-The args are[b4, yellow]
-b4
-Found a literal b4
-yellow
-Found a literal yellow
-1
-Found a literal 1
-</pre>
-</span>
-</div>
 </div>
 <div id="footer">
 <p>
@@ -393,7 +104,7 @@ Found a literal 1
 <input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
 </label>
 </div>Generated by 
-<a href="http://www.gradle.org">Gradle 2.13</a> at 28-Apr-2017 17:20:49</p>
+<a href="http://www.gradle.org">Gradle 2.13</a> at 09-May-2017 09:24:24</p>
 </div>
 </div>
 </body>

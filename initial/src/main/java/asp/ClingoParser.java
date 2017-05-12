@@ -11,15 +11,15 @@ import java.util.List;
 public class ClingoParser {
 
     public PredicateTree parsePredicate(String pred) {
-        System.out.println(pred);
+        //System.out.println(pred);
         int firstRoundBracket = pred.indexOf('(');
         if(firstRoundBracket == -1) {
-            System.out.println("Found a literal " + pred);
+            //System.out.println("Found a literal " + pred);
             return new PredicateTree(pred, true);
         } else {
             // ex name = holdsAt
             String name = pred.substring(0, firstRoundBracket);
-            System.out.println(name);
+            //System.out.println(name);
 
             PredicateTree predTree = new PredicateTree(name, false);
 
@@ -27,7 +27,7 @@ public class ClingoParser {
             // Remaining is like on(b1,s1),1 -> i.e. the arguments of holdsAt
             String remaining = pred.substring(firstRoundBracket + 1, pred.length() - 1);
 
-            System.out.println(remaining);
+            //System.out.println(remaining);
 
             // Split them into individual arguments
             // ex on(b1,s1) and 1 and then parse each recursively
@@ -82,7 +82,7 @@ public class ClingoParser {
 
         // Add very last element as well as this is not accounted for
         args.add(remaining.substring(start, remaining.length()));
-        System.out.println("The args are" + args.toString());
+        //System.out.println("The args are" + args.toString());
 
         return args;
     }

@@ -28,12 +28,14 @@
 
       <div class="btn-group-vertical col-sm-4">
           Rule to learn <input id="rule" type="text" size = "35" name="rule" value="happensAt(remove_col(var(col)), var(time))"><br><br>
-          Current instance <input type="text" id="action" size = "35" name="instance" value="happensAt(remove_col(red), 1)"><br><br>
+          Current command <input type="text" id="action" size = "35" name="instance" value="happensAt(remove_col(red), 1)"><br><br>
           Current hypothesis <textarea id="hyp" rows="6" cols="35" size="35"> Perform learning first </textarea><br><br>
           <br>
           <button id = "add-pos" type="button" class="btn btn-primary">Add positive example</button>
           <button id = "add-neg" type="button" class="btn btn-primary">Add negative example</button>
           <button id = "learn" type="button" class="btn btn-primary">Perform learning</button>
+          <button id = "wipe" type="button" class="btn btn-primary">Empty stacks</button>
+          <button id = "test-curr-hyp" type="button" class="btn btn-primary">Test current hypothesis</button>
       </div>
     </div>
     </div>
@@ -54,6 +56,17 @@
             function() {
             performLearning();
         });
+
+        document.getElementById("wipe").addEventListener('click',
+            function() {
+            wipeGrids();
+        });
+
+        document.getElementById("test-curr-hyp").addEventListener('click',
+            function() {
+            testCurrentHyp();
+        });
+
     </script>
 </body>
 </html>
