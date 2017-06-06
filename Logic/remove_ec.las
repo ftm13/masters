@@ -1,9 +1,6 @@
 time(1..2).
-col(brown).
 col(red).
-col(cyan).
-col(yellow).
-col(orange).
+col(black).
 
 holdsAt(F, T+1) :- initAt(F,T), time(T).
 holdsAt(F, T+1) :- holdsAt(F, T), not terminateAt(F, T), time(T).
@@ -15,7 +12,7 @@ holdsAt(F,1) :- initState(F).
 
 holdsAt2(covered(B), T) :- holdsAt(on(B2, B), T), time(T).
 
-#modeh(initAt(on(var(block), var(block)), var(time))).
+%#modeh(initAt(on(var(block), var(block)), var(time))).
 #modeh(terminateAt(on(var(block), var(block)), var(time))).
 #modeb(1, happensAt(remove_col(var(col)), var(time))).
 #modeb(1, holdsAt(on(var(block), var(block)), var(time))).

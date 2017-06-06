@@ -17,18 +17,18 @@
       <div class="row">
         <div class="col-sm-4">
           <h3>Initial state</h3>
-          <p>Click on the grid cells in order to change their colour!</p>
+          <!--<p>Click on the grid cells in order to change their colour!</p>-->
           <div id="grid1"></div>
         </div>
         <div class="col-sm-4">
           <h3>Target state</h3>
-          <p>Draw the outcome of the rule you are trying to teach!</p>
+          <!--<p>Draw the outcome of the rule you are trying to teach!</p>-->
           <div id="grid2"></div>
         </div>
 
       <div class="btn-group-vertical col-sm-4">
-          Rule to learn <input id="rule" type="text" size = "35" name="rule" value="happensAt(remove_col(var(col)), var(time))"><br><br>
-          Current command <input type="text" id="action" size = "35" name="instance" value="happensAt(remove_col(red), 1)"><br><br>
+          Rule to learn <input id="rule" type="text" size = "35" name="rule" value="happensAt(rm_tallest_block, var(time))"><br><br>
+          Current command <input type="text" id="action" size = "35" name="instance" value="happensAt(rm_tallest_block, 1)"><br><br>
           Current hypothesis <textarea id="hyp" rows="6" cols="35" size="35"> Perform learning first </textarea><br><br>
           <br>
           <button id = "add-pos" type="button" class="btn btn-primary">Add positive example</button>

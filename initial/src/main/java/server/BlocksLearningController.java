@@ -50,7 +50,7 @@ public class BlocksLearningController {
         System.out.println(clingoOutput.toString());
         List<List<Integer>> finalState = gameStateBuilder.build(clingoOutput,2);
         System.out.println(finalState);
-        return finalState   ;
+        return finalState;
     }
 
     @RequestMapping(value = "/perform-learning", method = RequestMethod.GET)

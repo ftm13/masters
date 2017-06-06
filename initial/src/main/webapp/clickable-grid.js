@@ -4,8 +4,8 @@ var currentHyp = "";
 
 function gridData() {
     // Pass it in as a variable
-    var numStacks = 5;
-    var numBlocks = 5;
+    var numStacks = 2;
+    var numBlocks = 3;
 
     var data = new Array();
     data.numStacks = numStacks;
@@ -116,7 +116,9 @@ var column2 = row2.selectAll(".square")
 
 function toAspInitial(grid) {
     var currStack = [];
-
+    for(var stack = 0; stack < grid.numStacks; stack++) {
+        currStack.push("initState(stack(s" + stack.toString() + ")).");
+    }
     for(var stack = 0; stack < grid.numStacks; stack++) {
 
         for(var block = 0; block < grid.numBlocks; block++) {
@@ -186,6 +188,9 @@ function toAspTargetColours(grid) {
 
 function toAspTarget(grid) {
     var currStack = [];
+    for(var stack = 0; stack < grid.numStacks; stack++) {
+        currStack.push("goalState(stack(s" + stack.toString() + ")).");
+    }
 
     for(var stack = 0; stack < grid.numStacks; stack++) {
 
