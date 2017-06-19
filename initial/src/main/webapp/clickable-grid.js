@@ -4,8 +4,8 @@ var currentHyp = "";
 
 function gridData() {
     // Pass it in as a variable
-    var numStacks = 2;
-    var numBlocks = 3;
+    var numStacks = 5;
+    var numBlocks = 5;
 
     var data = new Array();
     data.numStacks = numStacks;

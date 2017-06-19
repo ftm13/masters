@@ -1,24 +1,33 @@
 time(1..2).
-col(black).
-col(brown).
-col(red).
-col(cyan).
-col(yellow).
-col(orange).
+
+% Event calculus
 holdsAt(F, T+1) :- initAt(F,T), time(T).
 holdsAt(F, T+1) :- holdsAt(F, T), not terminateAt(F, T), time(T).
 holdsAt(F,1) :- initState(F).
+
 :- holdsAt(F, 2), not goalState(F).
 :- not holdsAt(F,2), goalState(F).
+
+% Covered
 holdsAt2(covered(B), T) :- holdsAt(on(B2, B), T), time(T).
 
-#modeh(initAt(on(var(block), var(block)), var(time))).
+% Definition of remove specific block
+terminateAt(on(V0, V1), V2) :- holdsAt(on(V0,V1), V2), happensAt(remove(V0), V2).
+terminateAt(on(V0, V1), V2) :- holdsAt(on(V0,V1), V2), happensAt(remove(V1), V2).
+initAt(on(V0,V3), V2) :- holdsAt(on(V0,V1), V2), holdsAt(on(V1,V3), V2), happensAt(remove(V1), V2).
+
+#modeh(happensAt(remove(var(block)),var(time))).
+
+% Completely irrelevant stuff
+#modeh(initAt(block_col(var(block), var(col)), var(time))).
+#modeh(initAt(on(var(block),var(block)), var(time))).
+#modeh(terminateAt(block_col(var(block), var(col)), var(time))).
 #modeh(terminateAt(on(var(block), var(block)), var(time))).
-#modeb(1, holdsAt(on(var(block), var(block)), var(time))).
+
 #modeb(1, holdsAt2(covered(var(block)), var(time))).
 #modeb(1, holdsAt(block_col(var(block), var(col)), var(time))).
-#maxv(4).
 #modeb(1, happensAt(remove_col(var(col)), var(time))).
+
 #pos({}, {}, {
 initState(stack(s0)).
 initState(stack(s1)).
@@ -128,4 +137,3 @@ goalState(block_col(b42,orange)).
 goalState(block_col(b43,brown)).
 goalState(block_col(b44,red)).
 }).
-

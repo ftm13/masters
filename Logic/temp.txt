@@ -1,0 +1,27 @@
+% b2
+% b1	b2
+% s1	s1
+#pos(p2, {
+	holdsAt(on(b1,s1),1),
+	holdsAt(on(b2,b1),1),
+	happensAt(remove(b1),1),
+	holdsAt(on(b2,s1),2)
+},{
+	holdsAt(on(b2,b1),2),
+	holdsAt(on(b1,s1),2)
+}).
+
+
+% b3 
+% b2    b3
+% b1	b1
+% s1	s1
+#pos(p3, {
+	holdsAt(on(b1,s1),1),
+	holdsAt(on(b2,b1),1),
+	holdsAt(on(b3,b2),1),
+	happensAt(remove(b2),1),
+	holdsAt(on(b1,s1),2)
+},{
+	holdsAt(on(b2,b1),2)
+}).

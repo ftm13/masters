@@ -19,7 +19,7 @@ holdsAt(F,1) :- initState(F).
 :- not holdsAt(F,2), goalState(F).
 holdsAt2(covered(B), T) :- holdsAt(on(B2, B), T), time(T).
 
-%n_tallest_stack(S1,T) :- height(S1, H1, T), height(S2, H2, T), lt(H1, H2).
+n_tallest_stack(S1,T) :- height(S1, H1, T), height(S2, H2, T), lt(H1, H2).
 
 %#modeh(initAt(on(var(block), var(block)), var(time))).
 #modeb(1, holdsAt(on(var(block), var(block)), var(time))).

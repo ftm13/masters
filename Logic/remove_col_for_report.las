@@ -30,7 +30,7 @@ holdsAt(F,1) :- initState(F).
 
 #modeh(initAt(block_col(var(block), var(col)), var(time))).
 #modeh(initAt(on(var(block),var(block)), var(time))).
-%#modeh(terminateAt(block_col(var(block), var(col)), var(time))).
+#modeh(terminateAt(block_col(var(block), var(col)), var(time))).
 #modeh(terminateAt(on(var(block), var(block)), var(time))).
 #modeb(1, height(var(stack), var(height), var(time))).
 #modeb(1, happensAt(remove_col(var(col)), var(time))).

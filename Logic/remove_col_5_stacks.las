@@ -1,24 +1,37 @@
 time(1..2).
-col(black).
-col(brown).
-col(red).
-col(cyan).
-col(yellow).
-col(orange).
+
 holdsAt(F, T+1) :- initAt(F,T), time(T).
 holdsAt(F, T+1) :- holdsAt(F, T), not terminateAt(F, T), time(T).
 holdsAt(F,1) :- initState(F).
+
 :- holdsAt(F, 2), not goalState(F).
 :- not holdsAt(F,2), goalState(F).
+
 holdsAt2(covered(B), T) :- holdsAt(on(B2, B), T), time(T).
 
-#modeh(initAt(on(var(block), var(block)), var(time))).
+% This makes no difference whatsoever pretty much...
+%:- holdsAt(on(B1,B2),T), holdsAt(on(B1,B3),T), B2 !=B3.
+
+% Redundant stuff
+max_height(S, S, 0, T) :- holdsAt(stack(S), T).
+max_height(S, B1, H+1, T) :- max_height(S, B2, H, T), H < 6, holdsAt(on(B1, B2), T).
+max_height2(S,H,T) :- max_height(S,_,H,T).
+height(S,H,T) :- max_height2(S,H,T), not max_height2(S, H+1, T).
+
+%#modeh(initAt(block_col(var(block), var(col)), var(time))).
+%#modeh(initAt(on(var(block),var(block)), var(time))).
+%#modeh(terminateAt(block_col(var(block), var(col)), var(time))).
 #modeh(terminateAt(on(var(block), var(block)), var(time))).
-#modeb(1, holdsAt(on(var(block), var(block)), var(time))).
-#modeb(1, holdsAt2(covered(var(block)), var(time))).
+
+%#modeb(1, height(var(stack),var(height),var(time))).
+#modeb(3, holdsAt(on(var(block), var(block)), var(time))).
+#modeb(3, holdsAt2(covered(var(block)), var(time))).
 #modeb(1, holdsAt(block_col(var(block), var(col)), var(time))).
+
+
 #maxv(4).
 #modeb(1, happensAt(remove_col(var(col)), var(time))).
+
 #pos({}, {}, {
 initState(stack(s0)).
 initState(stack(s1)).
@@ -128,4 +141,5 @@ goalState(block_col(b42,orange)).
 goalState(block_col(b43,brown)).
 goalState(block_col(b44,red)).
 }).
+
 
