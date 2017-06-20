@@ -1,52 +1,60 @@
 time(1..2).
-col(brown).
-col(red).
-col(cyan).
-col(yellow).
-col(orange).
 
+% Event calculus axioms
+holdsAt(F, T+1) :- initAt(F,T), time(T+1).
+holdsAt(F, T+1) :- holdsAt(F, T), not terminateAt(F, T), time(T+1).
+holdsAt(F,1) :- initState(F).
+
+% Definition of height
 max_height(S, S, 0, T) :- holdsAt(stack(S), T).
 max_height(S, B1, H+1, T) :- max_height(S, B2, H, T), H < 6, holdsAt(on(B1, B2), T).
 max_height2(S,H,T) :- max_height(S,_,H,T).
 height(S,H,T) :- max_height2(S,H,T), not max_height2(S, H+1, T).
 
 top_of_stack(B, S, T) :- max_height(S,B,H,T), height(S, H, T).
-
-holdsAt(F, T+1) :- initAt(F,T), time(T+1).
-holdsAt(F, T+1) :- holdsAt(F, T), not terminateAt(F, T), time(T+1).
-holdsAt(F,1) :- initState(F).
-:- holdsAt(F, 2), not goalState(F).
-:- not holdsAt(F,2), goalState(F).
 holdsAt2(covered(B), T) :- holdsAt(on(B2, B), T), time(T).
 
-%n_tallest_stack(S1,T) :- height(S1, H1, T), height(S2, H2, T), lt(H1, H2).
+% S1 is taller than S2
+holdsAt2(taller(S1,S2),T) :- height(S2,H2,T), height(S1,H1,T), H2 < H1.
 
+% S1 is not tallest if there exist another stack which is taller
+holdsAt2(n_tallest(S1), T) :- holdsAt(stack(S1),T), holdsAt(stack(S2),T), holdsAt2(taller(S2,S1),T).
+
+% S1 is tallest if it's not n_tallest
+holdsAt2(tallest(S1), T) :- holdsAt(stack(S1),T), not holdsAt2(n_tallest(S1), T). 
+
+% Definition of remove specific block
+terminateAt(on(V0, V1), V2) :- holdsAt(on(V0,V1), V2), happensAt(remove(V0), V2).
+terminateAt(on(V0, V1), V2) :- holdsAt(on(V0,V1), V2), happensAt(remove(V1), V2).
+initAt(on(V0,V3), V2) :- holdsAt(on(V0,V1), V2), holdsAt(on(V1,V3), V2), happensAt(remove(V1), V2).
+
+% Other stuff
 lt(H1, H2) :- h(H1), h(H2), H1 < H2.
 h(0..6).
 
+% Relevant
+%#modeh(holdsAt2(tallest(var(stack)), var(time))).
+#modeh(happensAt(remove(var(block)),var(time))).
+
+%#modeb(2, holdsAt(stack(var(stack)), var(time))).
+#modeb(1, top_of_stack(var(block), var(stack), var(time))).
+%#modeb(1, holdsAt2(taller(var(stack),var(stack)), var(time))).
+#modeb(1, holdsAt2(tallest(var(stack)), var(time))).
+
+% Completely irrelevant
+%#modeh(terminateAt(on(var(block), var(block)), var(time))).
 %#modeh(initAt(on(var(block), var(block)), var(time))).
 
-#modeh(n_tallest_stack(var(stack), var(time))).
-#modeh(terminateAt(on(var(block), var(block)), var(time))).
 %#modeb(1, holdsAt2(covered(var(block)), var(time))).
-#modeb(1, holdsAt(block_col(var(block), var(col)), var(time))).
+%#modeb(1, holdsAt(block_col(var(block), var(col)), var(time))).
 #modeb(1, happensAt(rm_tallest_block, var(time)), (positive)).
-#modeb(1, top_of_stack(var(block), var(stack), var(time))).
-#modeb(height(var(stack), var(height), var(time)), (positive)).
-#modeb(1, lt(var(height),var(height)), (positive, anti_reflexive, symmetric)).
-#modeb(1, holdsAt(on(var(block), var(block)), var(time))).
-#modeb(1, n_tallest_stack(var(stack), var(time))).
+
+%#modeb(height(var(stack), var(height), var(time)), (positive)).
+%#modeb(1, lt(var(height),var(height)), (positive, anti_reflexive, symmetric)).
+%#modeb(1, holdsAt(on(var(block), var(block)), var(time))).
+%#modeb(1, n_tallest_stack(var(stack), var(time))).
+
 #maxv(5).
-
-
-#bias("var_of_type(V, time) :- body(holdsAt2(_, V)).").
-#bias("var_of_type(V, time) :- body(top_of_stack(_,_,V)).").
-#bias("var_of_type(V, time) :- body(holdsAt(_,V)).").
-#bias("var_of_type(V, time) :- body(height(_,_,V)).").
-#bias("var_of_type(V, time) :- body(happensAt(_,V)).").
-#bias("var_of_type(V, time) :- body(n_tallest_stack(_,V)).").
-%#bias(":- var_of_type(V1, time), var_of_type(V2, time), V1 < V2.").
-
 
 #pos({}, {}, {
 initState(stack(s0)).
@@ -73,6 +81,7 @@ goalState(block_col(b10,cyan)).
 goalState(block_col(b20,cyan)).
 }).
 
+
 #pos({}, {}, {
 initState(stack(s0)).
 initState(stack(s1)).
@@ -89,21 +98,7 @@ holdsAt(block_col(b02,cyan),1).
 holdsAt(block_col(b03,cyan),1).
 holdsAt(block_col(b10,cyan),1).
 holdsAt(block_col(b20,cyan),1).
-happensAt(rm_tallest_block, 1).
-goalState(stack(s0)).
-goalState(stack(s1)).
-goalState(stack(s2)).
-goalState(on(b00,s0)).
-goalState(on(b01,b00)).
-goalState(on(b02,b01)).
-goalState(on(b10,s1)).
-goalState(on(b20,s2)).
-goalState(block_col(b00,cyan)).
-goalState(block_col(b01,cyan)).
-goalState(block_col(b02,cyan)).
-goalState(block_col(b03,cyan)).
-goalState(block_col(b10,cyan)).
-goalState(block_col(b20,cyan)).
+holdsAt(tallest_stack(s0),1).
 }).
 
 #pos({}, {}, {

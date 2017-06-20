@@ -12,6 +12,10 @@ holdsAt(F, T+1) :- holdsAt(F, T), not terminateAt(F, T), time(T+1).
 #modeh(initAt(on(var(block),var(block)), var(time))).
 #modeh(terminateAt(on(var(block), var(block)), var(time))).
 
+% Completely irrelevant stuff
+#modeh(initAt(block_col(var(block), var(col)), var(time))).
+#modeh(terminateAt(block_col(var(block), var(col)), var(time))).
+
 % Body mode declarations
 #modeb(1, holdsAt(on(var(block),var(block)), var(time))).
 #modeb(1, happensAt(add(var(block), var(block)), var(time))).
